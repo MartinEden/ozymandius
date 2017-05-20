@@ -5,6 +5,9 @@ space_character = " "
 brick_character = "█"
 ruin_characters = ["▞", "▚"]
 
+width = 80
+width_change_per_row = 3 # Increase this to make the slope more gradual
+
 prologue = """I met a traveller from an antique land, 
 Who said—“Two vast and trunkless legs of stone 
 Stand in the desert. . . . Near them, on the sand, 
@@ -99,12 +102,9 @@ def clear_terminal():
 	print(chr(27) + "[2J")
 
 def render_pyramid():
-	width = 80
-	width_change_per_row = 3 # Increase this to make the slope more gradual
-	weathering_rate = 0
-
 	p = Pyramid(width, width_change_per_row)
 	i = 0
+	weathering_rate = 0
 	while p.brick_count() > 25:	
 		weathering_rate += 0.00002
 		clear_terminal()
